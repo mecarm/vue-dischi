@@ -1,9 +1,9 @@
 <template>
-  <div class="col-2 p-3 my-2 mx-3">
-    <img class="w-100" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png" alt="">
-    <h4 class="pt-2">New Jersey</h4>
-    <div>Bon Jovi</div>
-    <span>1988</span>
+  <div class="col-2 p-3 my-1 mx-3">
+    <img class="w-100" :src="dettagliMusica.poster" alt="">
+    <h5 class="pt-2">{{dettagliMusica.title}}</h5>
+    <div>{{dettagliMusica.author}}</div>
+    <span>{{dettagliMusica.year}}</span>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 export default {
   name: 'DischiComp',
   props: {
-
+    dettagliMusica: Object
   }
 }
 </script>
@@ -21,5 +21,9 @@ export default {
 .col-2{
   background: #303841;
   color: rgb(112, 107, 107);
+}
+
+h5{
+  color: white;
 }
 </style>
