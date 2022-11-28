@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+
     <HeaderComp @emitGenere='genereProvaInMethods' :PropsArrayGeneri='arrayGeneri'/>
+
     <MainComp @emitGeneri='mehodsListaGeneri' :PropsGenereSelezionato='genereValue'/>
+    
   </div>
 </template>
 
@@ -25,7 +28,7 @@ export default {
     genereProvaInMethods(valueRiportatoDaHeader){
       this.genereValue = valueRiportatoDaHeader
     },
-    //richiamo funzione nell'emit nel template per associare il valore dellarraygeneri nel main al arrayGeneri creato qui in app.vue
+    //richiamo funzione nell'emit nel template per associare il valore dell arraygeneri nel main al arrayGeneri creato qui in app.vue
     mehodsListaGeneri(valueRicevutoNellEmit){
       this.arrayGeneri = valueRicevutoNellEmit
     }

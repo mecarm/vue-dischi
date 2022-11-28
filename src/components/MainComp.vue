@@ -1,7 +1,7 @@
 <template>
   <main class="overflow-auto">
     <div class=" cards d-flex flex-wrap">
-        <DischiComp v-for="(element, index) in dataMusic" :key="index" :dettagliMusica="element"/>
+        <DischiComp v-for="(element, index) in functionComputed" :key="index" :dettagliMusica="element"/>
     </div>
   </main>
 </template>
@@ -26,7 +26,17 @@ export default {
     },
     //Con la funzione computed posso attivare il filter al cambiamento della variabile PropsGenereSelezionato
     computed:{
-
+        functionComputed(){
+            //condizione per generare gli album
+            if (this.PropsGenereSelezionato == '' ){
+                return this.dataMusic
+            }
+            else{
+                return this.dataMusic.filter((elem) => {
+                    return elem.genre == this.PropsGenereSelezionato
+                })
+            }
+        }
     },
     mounted() {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
@@ -39,7 +49,7 @@ export default {
                         this.arrayGeneri.push(elem.genre)
                     }
                 })
-                this.$emit('emitGeneri', this.arrayGeneri)
+                this.$emit('emitGeneri', this.arrayGeneri) //invoco la funzione emit per spostare i dati dell'arrayGeneri in appvue
             });
 
     }
