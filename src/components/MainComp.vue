@@ -12,6 +12,9 @@ import DischiComp from './DischiComp.vue';
 
 export default {
     name: 'MainComp',
+    props: {
+        PropsGenereSelezionato: String
+    },
     components: {
         DischiComp,
     },
@@ -21,18 +24,22 @@ export default {
             arrayGeneri: []
         }
     },
+    //Con la funzione computed posso attivare il filter al cambiamento della variabile PropsGenereSelezionato
+    computed:{
+
+    },
     mounted() {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then((response) => {
                 this.dataMusic = response.data.response
-                
+
                 this.dataMusic.forEach(elem => {
 
                     if (!this.arrayGeneri.includes(elem.genre)) {
                         this.arrayGeneri.push(elem.genre)
-                        console.log(elem.genre)
                     }
                 })
+                this.$emit('emitGeneri', this.arrayGeneri)
             });
 
     }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderComp @emitGenere='genereInMethods'/>
-    <MainComp/>
+    <HeaderComp @emitGenere='genereProvaInMethods' :PropsArrayGeneri='arrayGeneri'/>
+    <MainComp @emitGeneri='mehodsListaGeneri' :PropsGenereSelezionato='genereValue'/>
   </div>
 </template>
 
@@ -17,14 +17,19 @@ export default {
   },
   data(){
     return{
-      genereValue: ''
+      genereValue: '',
+      arrayGeneri: []
     }
   },
   methods: {
-    genereInMethods(valueRiportatoDaHeader){
+    genereProvaInMethods(valueRiportatoDaHeader){
       this.genereValue = valueRiportatoDaHeader
+    },
+    //richiamo funzione nell'emit nel template per associare il valore dellarraygeneri nel main al arrayGeneri creato qui in app.vue
+    mehodsListaGeneri(valueRicevutoNellEmit){
+      this.arrayGeneri = valueRicevutoNellEmit
     }
-  }
+  },
 }
 </script>
 

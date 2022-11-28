@@ -8,7 +8,8 @@
     <div class="w-25 me-3">
       <select class="form-select" v-model="genereSelezionato" @change="$emit('emitGenere', genereSelezionato)" aria-label="Default select example">
         <option disabled value="">Filtra per genere</option>
-        <option :value="elem" v-for="(elem, index) in arrayGeneri" :key="index">{{elem}}</option>
+        <!-- Ciclo l'array ricevuto tramite props -->
+        <option :value="elem" v-for="(elem, index) in PropsArrayGeneri" :key="index">{{elem}}</option>
       </select>
     </div>
   </header>
@@ -17,9 +18,11 @@
 <script>
 export default {
     name: 'HeaderComp',
+    props: {
+      PropsArrayGeneri : Array
+    },
     data(){
       return{
-        arrayGeneri: ['Pop', 'Rock', 'Jazz'],
         genereSelezionato: ''
       }
     }
