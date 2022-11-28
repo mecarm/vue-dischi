@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComp/>
+    <HeaderComp @emitGenere='genereInMethods'/>
     <MainComp/>
   </div>
 </template>
@@ -14,7 +14,16 @@ export default {
   components: {
     HeaderComp,
     MainComp,
-    
+  },
+  data(){
+    return{
+      genereValue: ''
+    }
+  },
+  methods: {
+    genereInMethods(valueRiportatoDaHeader){
+      this.genereValue = valueRiportatoDaHeader
+    }
   }
 }
 </script>

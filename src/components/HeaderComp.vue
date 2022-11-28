@@ -1,15 +1,28 @@
 <template>
-    <header>
-        <div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png"
-                alt="">
-        </div>
-    </header>
+  <header class="d-flex align-items-center justify-content-between">
+    <div>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png"
+        alt="">
+    </div>
+    <div class="w-25 me-3">
+      <select class="form-select" v-model="genereSelezionato" @change="$emit('emitGenere', genereSelezionato)" aria-label="Default select example">
+        <option disabled value="">Filtra per genere</option>
+        <option :value="elem" v-for="(elem, index) in arrayGeneri" :key="index">{{elem}}</option>
+      </select>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-    name: 'HeaderComp'
+    name: 'HeaderComp',
+    data(){
+      return{
+        arrayGeneri: ['Pop', 'Rock', 'Jazz'],
+        genereSelezionato: ''
+      }
+    }
 }
 </script>
 

@@ -18,13 +18,23 @@ export default {
     data(){
         return{
             dataMusic: '',
+            arrayGeneri: []
         }
     },
-    mounted(){
+    mounted() {
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-            .then( (response) => {
+            .then((response) => {
                 this.dataMusic = response.data.response
-    })
+                
+                this.dataMusic.forEach(elem => {
+
+                    if (!this.arrayGeneri.includes(elem.genre)) {
+                        this.arrayGeneri.push(elem.genre)
+                        console.log(elem.genre)
+                    }
+                })
+            });
+
     }
 }
 </script>
