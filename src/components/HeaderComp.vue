@@ -5,7 +5,7 @@
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/2048px-Spotify_logo_without_text.svg.png"
         alt="">
     </div>
-    <div class="w-25 me-3">
+    <div class="w-auto me-3">
       <select class="form-select" v-model="genereSelezionato" @change="$emit('emitGenere', genereSelezionato)" aria-label="Default select example">
         <option disabled value="">Filtra per genere</option>
         <!-- Ciclo l'array ricevuto tramite props -->
