@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="overflow-auto">
     <div class=" cards d-flex flex-wrap">
         <DischiComp v-for="(element, index) in dataMusic" :key="index" :dettagliMusica="element"/>
     </div>
